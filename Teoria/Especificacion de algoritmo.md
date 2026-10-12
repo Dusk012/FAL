@@ -75,7 +75,36 @@ return (i < n);
 //{Post: ret = Ex a; 0 <= a <n : mod(v[a],2) = 0}
 ```
 ```cpp
-//{Pre: 0 <= n <= longitud(v)}
-int posPrimerCero(int const v[], int n)/*return ret*/
-//{Pos: ret = Min a: 0 <= a <= n ^ }
+// { Pre: 0 <= n <= longitud(v) }
+int posPrimerCero(int const v[], int n) /* return ret */ {
+int i = 0;
+// { I: (0 <= i <= n) ^ P.t. j : 0 <= j < i : v[j] /= 0 }
+while (i < n && v[i] != 0)
+++i;
+return i;
+}
+// { Post:
+// ret = Max a
+// : 0 <= a <= n ^
+// (P.t. j : 0 <= j < a : v[j] /= 0)
+// : a }
+//=======================================
+// { Pre: 0 <= n <= longitud(v) ^ ordenado(v, n)
+// donde
+// ordenado(v, n) = P.t. j : 0 < j < n : v[j-1] <= v[j] }
+int buscaPos(int const v[], int n, int x) /* return ret */ {
+int pos = 0;
+// { I: (0 <= pos <= n) ^ P.t. j : 0 <= j < pos : v[j] < x }
+while (pos < n && v[pos] < x)
+++pos;
+return pos; // P.t. j : pos <= j < n : v[j] >= x
+}
+// { Post: ret = Min a : 0 <= a <= n ^
+// P.t. j : a <= j < n : v[j] >= x
+// : a }
 ```
+
+# Acumuladores
+Es una variable que permite condensar informacion procesada.
+
+
