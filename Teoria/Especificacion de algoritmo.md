@@ -107,4 +107,5 @@ return pos; // P.t. j : pos <= j < n : v[j] >= x
 # Acumuladores
 Es una variable que permite condensar informacion procesada.
 
+# Recursivos
 
